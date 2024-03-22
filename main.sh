@@ -25,7 +25,7 @@ PROD URL: https://x.y.com
 
 do_auth()
 {
-    curl -s -S -v -H "Content-Type: application/json"  $SERVER/auth/token -X POST -d '{ "clientId":"0FF944EB-7527-40ED-AB2A-680F9465013F", "secret":"lN5dnGT1rS110FwNx2R9", "resource":"https://nogenggsqaap.chamberlain.com/packages" }'
+    curl -s -S -v -H "Content-Type: application/json"  $SERVER/auth/token -X POST -d '{ "clientId":"xxxxxx", "secret":"xxxx", "resource":"https://x.y.com/packages" }'
 }
 
 
