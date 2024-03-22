@@ -20,20 +20,20 @@ PROD URL: https://x.y.com
     "resource":"https://x.y.com/packages"
 }
 
-#SERVER="https://nogenggsqaap.chamberlain.com"
+#SERVER="https://x.y.com"
 
 
 do_auth()
 {
-    curl -s -S -v -H "Content-Type: application/json"  $SERVER/auth/token -X POST -d '{ "clientId":"xxxxxx", "secret":"xxxx", "resource":"https://x.y.com/packages" }'
+    curl -s -S -v -H "Content-Type: application/json"  $SERVER/auth/token -X POST -d '{ "clientId":"0FF944EB-7527-40ED-AB2A-680F9465013F", "secret":"lN5dnGT1rS110FwNx2R9", "resource":"https://x.y.com/packages" }'
 }
 
 
 
-#   root@VantronOS-EFA7:~# curl -s -S -v -H 'Content-Type: application/json' https://nogenggsqaap.chamberlain.com/auth/token -X POST -d '{ "clientId":"0FF944EB-7527-40ED-AB2A-680F9465013F", "secret":"lN5dnGT1rS110FwNx2R9", "resource":"https://
-#   nogenggsqaap.chamberlain.com/packages" }'
+#   root@VantronOS-EFA7:~# curl -s -S -v -H 'Content-Type: application/json' https://x.y.com/auth/token -X POST -d '{ "clientId":"0FF944EB-7527-40ED-AB2A-680F9465013F", "secret":"lN5dnGT1rS110FwNx2R9", "resource":"https://
+#   x.y.com/packages" }'
 #   > POST /auth/token HTTP/1.1
-#   > Host: nogenggsqaap.chamberlain.com
+#   > Host: x.y.com
 #   > User-Agent: curl/7.71.0
 #   > Accept: */*
 #   > Content-Type: application/jsoneyJhbGciOiJSUzI1NiIsImtpZCI6IjBDQzRGRENBNEY0MUZBNkMwOUVCN0U3REQ1RTFBODU2QzBERUU0RjMiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJET
@@ -52,10 +52,10 @@ CHPdHxzLCLcWFNangatSK5iUkGAqFydcX8nz4ObGud_E9W2bq4e68Q_Gn_Y-VTvTOv4Jk4uu50q_qXvu
 #   < Date: Thu, 07 Dec 2023 01:56:13 GMT
 #   < Transfer-Encoding: chunked
 #   <
-#   {"tokenType":"Bearer","token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsIm5hbWVpZCI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsImp0aSI6ImY0NDgzZjIzLWJmNzUtNGZjMi04NDVhLTIxMmM0NzFhMGZjMCIsImlhdCI6MTcwMTkxNDE3Mywicm9sZSI6InVzZXIiLCJuYmYiOjE3MDE5MTQxNjMsImV4cCI6MTcwMTkxNzc3MywiaXNzIjoibm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbSIsImF1ZCI6Imh0dHBzOi8vbm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbS9wYWNrYWdlcyJ9.DHZly6hmJfdmBvXRTNLByC6Cxm-qjTAE0-zWCXoOLY4PpuvcNZ8ohUZzj6YHdNOjRTW7KrIDWesTCaEyla6YzF92s3nSikORnzB0zLTV5IsHXepx51MQzvFglgFMTQrGnO58uBtlhsLX_mJ9BoRxCJfns-XYbvhwsi3r7vb9zwAgXKwL4nPOnavjrwL78XYzQNp5qxoFX684ro8SVubmd1wmXJLX4AGWz4BV4g0mbNOKjDatcio6AMpP2r_0WqrV7wepNXn-Tlw9JEE0LTcCPRFRoqYxHz_ngB6dLxHtehiDKrZM505c7VxjAQvtvXqt-l1QV_W-1Fod2i9g3ydM-g","issuedDate":"2023-12-07T01:56:13.5724734Z","expirationDate":"2023-12-07T02:56:13.5724734Z","resource":"https://nogenggsqaap.chamberlain.com/packages"}root@VantronOS-EFA7:~#
+#   {"tokenType":"Bearer","token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsIm5hbWVpZCI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsImp0aSI6ImY0NDgzZjIzLWJmNzUtNGZjMi04NDVhLTIxMmM0NzFhMGZjMCIsImlhdCI6MTcwMTkxNDE3Mywicm9sZSI6InVzZXIiLCJuYmYiOjE3MDE5MTQxNjMsImV4cCI6MTcwMTkxNzc3MywiaXNzIjoibm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbSIsImF1ZCI6Imh0dHBzOi8vbm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbS9wYWNrYWdlcyJ9.DHZly6hmJfdmBvXRTNLByC6Cxm-qjTAE0-zWCXoOLY4PpuvcNZ8ohUZzj6YHdNOjRTW7KrIDWesTCaEyla6YzF92s3nSikORnzB0zLTV5IsHXepx51MQzvFglgFMTQrGnO58uBtlhsLX_mJ9BoRxCJfns-XYbvhwsi3r7vb9zwAgXKwL4nPOnavjrwL78XYzQNp5qxoFX684ro8SVubmd1wmXJLX4AGWz4BV4g0mbNOKjDatcio6AMpP2r_0WqrV7wepNXn-Tlw9JEE0LTcCPRFRoqYxHz_ngB6dLxHtehiDKrZM505c7VxjAQvtvXqt-l1QV_W-1Fod2i9g3ydM-g","issuedDate":"2023-12-07T01:56:13.5724734Z","expirationDate":"2023-12-07T02:56:13.5724734Z","resource":"https://x.y.com/packages"}root@VantronOS-EFA7:~#
 #
 
-#{"tokenType":"Bearer","token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsIm5hbWVpZCI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsImp0aSI6ImY0NDgzZjIzLWJmNzUtNGZjMi04NDVhLTIxMmM0NzFhMGZjMCIsImlhdCI6MTcwMTkxNDE3Mywicm9sZSI6InVzZXIiLCJuYmYiOjE3MDE5MTQxNjMsImV4cCI6MTcwMTkxNzc3MywiaXNzIjoibm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbSIsImF1ZCI6Imh0dHBzOi8vbm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbS9wYWNrYWdlcyJ9.DHZly6hmJfdmBvXRTNLByC6Cxm-qjTAE0-zWCXoOLY4PpuvcNZ8ohUZzj6YHdNOjRTW7KrIDWesTCaEyla6YzF92s3nSikORnzB0zLTV5IsHXepx51MQzvFglgFMTQrGnO58uBtlhsLX_mJ9BoRxCJfns-XYbvhwsi3r7vb9zwAgXKwL4nPOnavjrwL78XYzQNp5qxoFX684ro8SVubmd1wmXJLX4AGWz4BV4g0mbNOKjDatcio6AMpP2r_0WqrV7wepNXn-Tlw9JEE0LTcCPRFRoqYxHz_ngB6dLxHtehiDKrZM505c7VxjAQvtvXqt-l1QV_W-1Fod2i9g3ydM-g","issuedDate":"2023-12-07T01:56:13.5724734Z","expirationDate":"2023-12-07T02:56:13.5724734Z","resource":"https://nogenggsqaap.chamberlain.com/packages"}
+#{"tokenType":"Bearer","token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsIm5hbWVpZCI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsImp0aSI6ImY0NDgzZjIzLWJmNzUtNGZjMi04NDVhLTIxMmM0NzFhMGZjMCIsImlhdCI6MTcwMTkxNDE3Mywicm9sZSI6InVzZXIiLCJuYmYiOjE3MDE5MTQxNjMsImV4cCI6MTcwMTkxNzc3MywiaXNzIjoibm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbSIsImF1ZCI6Imh0dHBzOi8vbm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbS9wYWNrYWdlcyJ9.DHZly6hmJfdmBvXRTNLByC6Cxm-qjTAE0-zWCXoOLY4PpuvcNZ8ohUZzj6YHdNOjRTW7KrIDWesTCaEyla6YzF92s3nSikORnzB0zLTV5IsHXepx51MQzvFglgFMTQrGnO58uBtlhsLX_mJ9BoRxCJfns-XYbvhwsi3r7vb9zwAgXKwL4nPOnavjrwL78XYzQNp5qxoFX684ro8SVubmd1wmXJLX4AGWz4BV4g0mbNOKjDatcio6AMpP2r_0WqrV7wepNXn-Tlw9JEE0LTcCPRFRoqYxHz_ngB6dLxHtehiDKrZM505c7VxjAQvtvXqt-l1QV_W-1Fod2i9g3ydM-g","issuedDate":"2023-12-07T01:56:13.5724734Z","expirationDate":"2023-12-07T02:56:13.5724734Z","resource":"https://x.y.com/packages"}
 
 
 #{
@@ -63,12 +63,12 @@ CHPdHxzLCLcWFNangatSK5iUkGAqFydcX8nz4ObGud_E9W2bq4e68Q_Gn_Y-VTvTOv4Jk4uu50q_qXvu
 #  "token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsIm5hbWVpZCI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsImp0aSI6ImY0NDgzZjIzLWJmNzUtNGZjMi04NDVhLTIxMmM0NzFhMGZjMCIsImlhdCI6MTcwMTkxNDE3Mywicm9sZSI6InVzZXIiLCJuYmYiOjE3MDE5MTQxNjMsImV4cCI6MTcwMTkxNzc3MywiaXNzIjoibm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbSIsImF1ZCI6Imh0dHBzOi8vbm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbS9wYWNrYWdlcyJ9.DHZly6hmJfdmBvXRTNLByC6Cxm-qjTAE0-zWCXoOLY4PpuvcNZ8ohUZzj6YHdNOjRTW7KrIDWesTCaEyla6YzF92s3nSikORnzB0zLTV5IsHXepx51MQzvFglgFMTQrGnO58uBtlhsLX_mJ9BoRxCJfns-XYbvhwsi3r7vb9zwAgXKwL4nPOnavjrwL78XYzQNp5qxoFX684ro8SVubmd1wmXJLX4AGWz4BV4g0mbNOKjDatcio6AMpP2r_0WqrV7wepNXn-Tlw9JEE0LTcCPRFRoqYxHz_ngB6dLxHtehiDKrZM505c7VxjAQvtvXqt-l1QV_W-1Fod2i9g3ydM-g",
 #  "issuedDate": "2023-12-07T01:56:13.5724734Z",
 #  "expirationDate": "2023-12-07T02:56:13.5724734Z",
-#  "resource": "https://nogenggsqaap.chamberlain.com/packages"
+#  "resource": "https://x.y.com/packages"
 #}
 
 #TOKEN="eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsIm5hbWVpZCI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsImp0aSI6IjQ2NTdmMmU4LWU2YjctNDE1MS1iZWYzLTFiNWY0NTVmYjA2OSIsImlhdCI6MTcwMTkxNDg4Nywicm9sZSI6InVzZXIiLCJuYmYiOjE3MDE5MTQ4NzcsImV4cCI6MTcwMTkxODQ4NywiaXNzIjoibm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbSIsImF1ZCI6Imh0dHBzOi8vbm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbS9wYWNrYWdlcyJ9.oZfYFNyLqMH05L9j0Qctm46yZOBFWYVeFZw-W1RRP3sS8g0CegD-r-r7Lhav-ScESvKnxLL8nmrIa9geNecHoxr2n7FVxYDTBm4njWa-4t4VvBd8xcWemYnOpoQn1lzGgo9OOkOB5wrmbskgWSkGRSJNikY4RASTxw3MtshEEn-sN87RK4Zbe8ukGzLYojnVkiCfb-ii2PK0JKqsIlQ5wYT50zlb98aDKwituMZr0rsVXWHLwJesHbHq4X2TJsbWeAIDICAn-f6X1t4lOjY-T_4-nLozJPbK7RQH7q6gcqIHUFGvJrTkmnGTXvIP-jMJwqOUJ8-k6Nc10mu_J2Tebw"
 
-#{"tokenType":"Bearer","token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsIm5hbWVpZCI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsImp0aSI6ImUxYjhhYTFhLTU1NzYtNDFkZC04ZmIyLWZmNDU0ZGMxZjIzYiIsImlhdCI6MTcwMjAxNjcyMSwicm9sZSI6InVzZXIiLCJuYmYiOjE3MDIwMTY3MTEsImV4cCI6MTcwMjAyMDMyMSwiaXNzIjoibm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbSIsImF1ZCI6Imh0dHBzOi8vbm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbS9wYWNrYWdlcyJ9.Oh_NMdO3Jg26yovGAV-yBT-feK4OJRA3Tv6z4DeWbGY5OBTl4BC7pjBBi-SHT0CE0B-oic4y1LrCOM0qwp3fLZTW7BZftrn2YYyL_gm-K4JSO8jXhhM71n8wnFvPPf1b0hKlSJB_SdEQ_MxFP550XmaHxtan0yearLKt2Zl4VI_0cbFak7klNusKsFMOjNbYJ60fITEVl4KeXcPk2UYenrCfDeFrGGoNfwurAPyin7r8eZES2E8FRTfyItaD2mPJ7BiYhlWlW3wfDl5iOGFoxxtPKoXwK-B-rKADTtiGTavhUA1ouI3NJJnRN9CcPU0VOLLhyplkjf7r3DCZybHKzA","issuedDate":"2023-12-08T06:25:21.2564073Z","expirationDate":"2023-12-08T07:25:21.2564073Z","resource":"https://nogenggsqaap.chamberlain.com/packages"}root@VantronOS-EFA7:/tmp#
+#{"tokenType":"Bearer","token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsIm5hbWVpZCI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsImp0aSI6ImUxYjhhYTFhLTU1NzYtNDFkZC04ZmIyLWZmNDU0ZGMxZjIzYiIsImlhdCI6MTcwMjAxNjcyMSwicm9sZSI6InVzZXIiLCJuYmYiOjE3MDIwMTY3MTEsImV4cCI6MTcwMjAyMDMyMSwiaXNzIjoibm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbSIsImF1ZCI6Imh0dHBzOi8vbm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbS9wYWNrYWdlcyJ9.Oh_NMdO3Jg26yovGAV-yBT-feK4OJRA3Tv6z4DeWbGY5OBTl4BC7pjBBi-SHT0CE0B-oic4y1LrCOM0qwp3fLZTW7BZftrn2YYyL_gm-K4JSO8jXhhM71n8wnFvPPf1b0hKlSJB_SdEQ_MxFP550XmaHxtan0yearLKt2Zl4VI_0cbFak7klNusKsFMOjNbYJ60fITEVl4KeXcPk2UYenrCfDeFrGGoNfwurAPyin7r8eZES2E8FRTfyItaD2mPJ7BiYhlWlW3wfDl5iOGFoxxtPKoXwK-B-rKADTtiGTavhUA1ouI3NJJnRN9CcPU0VOLLhyplkjf7r3DCZybHKzA","issuedDate":"2023-12-08T06:25:21.2564073Z","expirationDate":"2023-12-08T07:25:21.2564073Z","resource":"https://x.y.com/packages"}root@VantronOS-EFA7:/tmp#
 TOKEN="eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsIm5hbWVpZCI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsImp0aSI6ImUxYjhhYTFhLTU1NzYtNDFkZC04ZmIyLWZmNDU0ZGMxZjIzYiIsImlhdCI6MTcwMjAxNjcyMSwicm9sZSI6InVzZXIiLCJuYmYiOjE3MDIwMTY3MTEsImV4cCI6MTcwMjAyMDMyMSwiaXNzIjoibm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbSIsImF1ZCI6Imh0dHBzOi8vbm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbS9wYWNrYWdlcyJ9.Oh_NMdO3Jg26yovGAV-yBT-feK4OJRA3Tv6z4DeWbGY5OBTl4BC7pjBBi-SHT0CE0B-oic4y1LrCOM0qwp3fLZTW7BZftrn2YYyL_gm-K4JSO8jXhhM71n8wnFvPPf1b0hKlSJB_SdEQ_MxFP550XmaHxtan0yearLKt2Zl4VI_0cbFak7klNusKsFMOjNbYJ60fITEVl4KeXcPk2UYenrCfDeFrGGoNfwurAPyin7r8eZES2E8FRTfyItaD2mPJ7BiYhlWlW3wfDl5iOGFoxxtPKoXwK-B-rKADTtiGTavhUA1ouI3NJJnRN9CcPU0VOLLhyplkjf7r3DCZybHKzA"
 
 
@@ -81,10 +81,10 @@ do_batch_req()
          $SERVER/packages/api/v1/batch -X POST -d '{ "seedingSpecification":"190AVANTRON", "quantity":10}'
 }
 
-# root@VantronOS-EFA7:~# curl -s -S -v -H 'Content-Type: application/json' https://nogenggsqaap.chamberlain.com/auth/token -X POST -d '{ "clientId":"0FF944EB-7527-40ED-AB2A-680F9465013F", "secret":"lN5dnGT1rS110FwNx2R9", "resource":"https://
-# nogenggsqaap.chamberlain.com/packages" }'
+# root@VantronOS-EFA7:~# curl -s -S -v -H 'Content-Type: application/json' https://x.y.com/auth/token -X POST -d '{ "clientId":"0FF944EB-7527-40ED-AB2A-680F9465013F", "secret":"lN5dnGT1rS110FwNx2R9", "resource":"https://
+# x.y.com/packages" }'
 # > POST /auth/token HTTP/1.1
-# > Host: nogenggsqaap.chamberlain.com
+# > Host: x.y.com
 # > User-Agent: curl/7.71.0
 # > Accept: */*
 # > Content-Type: application/json
@@ -97,11 +97,11 @@ do_batch_req()
 # < Date: Thu, 07 Dec 2023 02:08:07 GMT
 # < Transfer-Encoding: chunked
 # <
-# {"tokenType":"Bearer","token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsIm5hbWVpZCI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsImp0aSI6IjQ2NTdmMmU4LWU2YjctNDE1MS1iZWYzLTFiNWY0NTVmYjA2OSIsImlhdCI6MTcwMTkxNDg4Nywicm9sZSI6InVzZXIiLCJuYmYiOjE3MDE5MTQ4NzcsImV4cCI6MTcwMTkxODQ4NywiaXNzIjoibm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbSIsImF1ZCI6Imh0dHBzOi8vbm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbS9wYWNrYWdlcyJ9.oZfYFNyLqMH05L9j0Qctm46yZOBFWYVeFZw-W1RRP3sS8g0CegD-r-r7Lhav-ScESvKnxLL8nmrIa9geNecHoxr2n7FVxYDTBm4njWa-4t4VvBd8xcWemYnOpoQn1lzGgo9OOkOB5wrmbskgWSkGRSJNikY4RASTxw3MtshEEn-sN87RK4Zbe8ukGzLYojnVkiCfb-ii2PK0JKqsIlQ5wYT50zlb98aDKwituMZr0rsVXWHLwJesHbHq4X2TJsbWeAIDICAn-f6X1t4lOjY-T_4-nLozJPbK7RQH7q6gcqIHUFGvJrTkmnGTXvIP-jMJwqOUJ8-k6Nc10mu_J2Tebw","issuedDate":"2023-12-07T02:08:07.2312694Z","expirationDate":"2023-12-07T03:08:07.2312694Z","resource":"https://nogenggsqaap.chamberlain.com/packages"}root@VantronOS-EFA7:~#
+# {"tokenType":"Bearer","token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsIm5hbWVpZCI6IjBmZjk0NGViLTc1MjctNDBlZC1hYjJhLTY4MGY5NDY1MDEzZiIsImp0aSI6IjQ2NTdmMmU4LWU2YjctNDE1MS1iZWYzLTFiNWY0NTVmYjA2OSIsImlhdCI6MTcwMTkxNDg4Nywicm9sZSI6InVzZXIiLCJuYmYiOjE3MDE5MTQ4NzcsImV4cCI6MTcwMTkxODQ4NywiaXNzIjoibm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbSIsImF1ZCI6Imh0dHBzOi8vbm9nZW5nZ3NxYWFwLmNoYW1iZXJsYWluLmNvbS9wYWNrYWdlcyJ9.oZfYFNyLqMH05L9j0Qctm46yZOBFWYVeFZw-W1RRP3sS8g0CegD-r-r7Lhav-ScESvKnxLL8nmrIa9geNecHoxr2n7FVxYDTBm4njWa-4t4VvBd8xcWemYnOpoQn1lzGgo9OOkOB5wrmbskgWSkGRSJNikY4RASTxw3MtshEEn-sN87RK4Zbe8ukGzLYojnVkiCfb-ii2PK0JKqsIlQ5wYT50zlb98aDKwituMZr0rsVXWHLwJesHbHq4X2TJsbWeAIDICAn-f6X1t4lOjY-T_4-nLozJPbK7RQH7q6gcqIHUFGvJrTkmnGTXvIP-jMJwqOUJ8-k6Nc10mu_J2Tebw","issuedDate":"2023-12-07T02:08:07.2312694Z","expirationDate":"2023-12-07T03:08:07.2312694Z","resource":"https://x.y.com/packages"}root@VantronOS-EFA7:~#
 
 # < HTTP/1.1 201 Created
 # < Content-Type: application/json; charset=utf-8
-# < Location: https://nogenggsqaap.chamberlain.com/api/v1.0/1b9baac7-a694-ee11-b594-00505699264b
+# < Location: https://x.y.com/api/v1.0/1b9baac7-a694-ee11-b594-00505699264b
 # < api-supported-versions: 1.0
 # < Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 # < Date: Thu, 07 Dec 2023 02:17:34 GMT
