@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import argparse
+import pandas as pd
+import requests
+import json
+import logging
+access_token_value = ''
+env_domian = {
+    "dev": "https://x-dev.y.com",
+    "pp": "https://x-pp.y.com",
+    "prod": "https://x.y.com"
+}
+
+
+env_secret = {
+    "dev": {
+        "Client_id_value": 'xxxxxxxxxxxxx',
+        "Client_secret_value": 'xxxxxxxxxxxxx'
+    },
+    "pp": {
+        "Client_id_value": 'yyyyyyyyyyyy',
+        "Client_secret_value": 'yyyyyyyyyyyyyyyyyy'
+    },
+    "prod": {
+        "Client_id_value": 'zzzzzzzzzzzzzzzzz',
+        "Client_secret_value": 'zzzzzzzzzzzzzzzzzz'
+    }
+}
+
+create_device_domain = {
+    "dev": "https://x-dev.y.com",
+    "pp": "https://x-pp.y.com",
+    "prod":	"https://x.myq-cloud.com"
+}
+
+
+#用于创建token
+def createToken(env: str):
+
+    print("Start getting token....")
+    url = env_domian[env] + '/connect/token'
+    print(url)
+    headers = {
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
+    data = {
+        "client_id": f"{env_secret[env]['Client_id_value']}",
+        "client_secret": f"{env_secret[env]['Client_secret_value']}",
+        "scope": "myqb:devices:cellular:manufacturing:write",
+        "grant_type": "client_credentials"
+    }
+
+    response = requests.request(url=url, headers=headers, method='POST', data=data)
+    global access_token_value
+    access_token_value = response.json()['access_token']
+    expires_in = response.json()['expires_in']
+    print(f"expires_in={expires_in},access_token_value={access_token_value}")
+
+#创建设备
+
+def create_device(env: str, filename: str):
+    if not filename:
+        print(f"file is None")
+        return
+
+    df = pd.read_excel(filename)
+    print(f"Start creating equipment,Number of equipment created: {df.shape[0]}")
+
+    # 定义日志文件, 方便定位
+    logging.basicConfig(filename='logfile.txt', level=logging.INFO ,format='%(asctime)s %(levelname)s %(message)s')
+    # 定义post请求时数据json的key, 定义必传的字段.....
+    key_list = ('serial_number', 'mac_address', 'imei', 'iccid', 'firmware', 'manufactor_date_utc')
+    url = create_device_domain[env] + '/api/v1/manufacture/cellular'
+    print(url)
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {access_token_value}"
+    }
+
+    for index, row in df.iterrows():  # 每行循环一次
+        data_dict = dict()
+        data_dict['firmware'] = dict()  # 这里嵌套一个字典
+        for column in df.columns.tolist():  # 操作列, 使用tolist(),返回一个list, xlsx的首行
+            if column in key_list:
+                data_dict[column] = str(row[column]).strip()
+            elif 'firmware' in column:    # column是一个字符串
+                sub_key = column.replace('firmware_', '').strip()
+                # print(sub_key)
+                data_dict['firmware'][sub_key] = str(row[column]).strip()
+        # 构造post请求需要传输的json数据，xlxs一行一个json数据
+        # print(data_dict)
+        data_json = json.dumps(data_dict)
+        try:  # 防止中间报错，程序停止
+            response = requests.request(url=url, headers=headers, data=data_json, method='POST')
+            if 200 <= response.status_code <= 299:
+                print(f"{data_dict['serial_number']} has successes.")
+                logging.info(f"{data_dict['serial_number']} has successes.")
+            else:
+                print(response.text)
+                print(f"serial number={data_dict['serial_number']}: {response.json()}")
+                logging.error(f"serial number={data_dict['serial_number']}: {response.json()}")
+        except Exception as e:
+            print(f"requests,request()发生异常: {e}")
+
+def main():
+    createToken(args.env)
+    create_device(args.env,args.file)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="This script is used to create devices")
+    parser.add_argument("--env", type=str, default='dev',
+                        help="Specify environment, default dev")
+    parser.add_argument("--file", type=str, default='',
+                        help="Specify file to read")
+    args = parser.parse_args()
+    if args.env in ("pp", "prod", "dev"):
+        main()
+    else:
+        print(f"Error, env need in [pp, prod, dev]")
