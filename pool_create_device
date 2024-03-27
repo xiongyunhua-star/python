@@ -1,0 +1,141 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import argparse
+import os
+import pandas as pd
+import requests
+import json
+import logging
+from multiprocessing import Pool
+access_token_value = ''
+env_domian = {
+    "dev": "https://x-dev.y.com",
+    "pp": "https://x-pp.y.com",
+    "prod": "https://x.y.com"
+}
+
+env_secret = {
+    "dev": {
+        "Client_id_value": 'xxxxxxxxxxx',
+        "Client_secret_value": 'xxxxxxxxxxxx'
+    },
+    "pp": {
+        "Client_id_value": 'xxxxxxxxxxxx',
+        "Client_secret_value": 'xxxxxxxxxxxxxxx'
+    },
+    "prod": {
+        "Client_id_value": 'xxxxxxxxxxxx',
+        "Client_secret_value": 'xxxxxxxxxxxxxxx'
+    }
+}
+
+create_device_domain = {
+    "dev": "https://x-dev.y.com",
+    "pp": "https://x-pp.y.com",
+    "prod":	"https://x.y.com"
+}
+
+
+#用于创建token
+def createToken(env: str):
+
+    print("Start getting token....")
+    url = env_domian[env] + '/connect/token'
+    print(url)
+    headers = {
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
+    data = {
+        "client_id": f"{env_secret[env]['Client_id_value']}",
+        "client_secret": f"{env_secret[env]['Client_secret_value']}",
+        "scope": "myqb:devices:cellular:manufacturing:write",
+        "grant_type": "client_credentials"
+    }
+
+    response = requests.request(url=url, headers=headers, method='POST', data=data)
+    global access_token_value
+    access_token_value = response.json()['access_token']
+    expires_in = response.json()['expires_in']
+    print(f"expires_in={expires_in},access_token_value={access_token_value}")
+
+def process_row(row, key_list):
+    data_dict = {}
+    data_dict['firmware'] = dict()  # 这里嵌套一个字典
+
+    for column in row.index.tolist():  # 操作列, 使用tolist(),返回一个list
+        if column in key_list:
+            data_dict[column] = str(row[column]).strip()
+        elif 'firmware' in column:  # column是一个字符串
+            sub_key = column.replace('firmware_', '').strip()
+            data_dict['firmware'][sub_key] = str(row[column]).strip()
+
+    return data_dict
+
+def create_device_request(data_dict, env, token):
+    url = create_device_domain[env] + '/api/v1/manufacture/cellular'
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {token}"
+    }
+    serial_number = data_dict['serial_number']
+    data_json = json.dumps(data_dict)
+
+    try:  # 防止中间报错，程序停止
+        response = requests.request(url=url, headers=headers, data=data_json, method='POST',timeout=60)
+        if 200 <= response.status_code <= 299:
+            return os.getpid(), serial_number, True, response.status_code
+        else:
+            return os.getpid(), serial_number, False, response.json()
+    except Exception as e:
+        return os.getpid(), serial_number, False, str(e)
+
+def create_devices_in_parallel(env, filename, num_processes):
+    global access_token_value
+    if not filename:
+        print(f"file is null")
+        return
+    df = pd.read_excel(filename)
+    print(f"Start creating equipment,Number of equipment created: {df.shape[0]}")
+
+    # 定义日志文件, 方便定位
+    logging.basicConfig(filename='logfile.txt', level=logging.INFO ,format='%(asctime)s %(levelname)s %(message)s')
+    # 定义post请求时数据json的key, 定义必传的字段.....
+    key_list = ('serial_number', 'mac_address', 'imei', 'iccid', 'firmware', 'manufactor_date_utc')
+    with Pool(num_processes) as pool:
+        async_result = []
+        for _, row in df.iterrows():
+            data_dict = process_row(row, key_list)
+
+            async_result.append(pool.apply_async(create_device_request, (data_dict, env, access_token_value))) #异步，无需等待...
+        success_count = 0
+        error_count = 0
+        for result in async_result:
+            sub_pid, serial_number, success, details = result.get() #进行阻塞,get()是阻塞的
+            if success:
+                success_count += 1
+                print(f"{sub_pid} {serial_number} has successes.")
+                logging.info(f"{sub_pid} {serial_number} has successes.")
+            else:
+                error_count += 1
+                print(f"{sub_pid} serial number={serial_number}: {details}")
+                logging.error(f"{sub_pid} serial number={serial_number}: {details}")
+
+    print(f"Total devices created successfully: {success_count}")
+    print(f"Total devices created Failed: {error_count}")
+
+
+def main():
+    createToken(args.env)
+    create_devices_in_parallel(args.env,args.file, os.cpu_count())
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="This script is used to create devices")
+    parser.add_argument("--env", type=str, default='dev',
+                        help="Specify environment, default dev")
+    parser.add_argument("--file", type=str, default='',
+                        help="Specify file to read")
+    args = parser.parse_args()
+    if args.env in ("pp", "prod", "dev"):
+        main()
+    else:
+        print(f"Error, env need in [pp, prod, dev]")
